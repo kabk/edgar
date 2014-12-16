@@ -3,20 +3,26 @@
 <head>
 <title>Science Fiction Interfaces</title>
 <meta charset="UTF-8">
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
 
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/bigfoot.js"></script>
 <script src="http://dimsemenov-static.s3.amazonaws.com/dist/jquery.magnific-popup.min.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/jquery.highlight-4.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
 
-
-
+<link rel="stylesheet" href="css/styles2.css">
 <link rel="stylesheet" href="css/magnific-popup.css">
 <link rel="stylesheet" href="css/bigfoot-number.css">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/sticky-navigation.css">
 
 
 
+<!-- footnotes -->
 <script type="text/javascript">
     var bigfoot = $.bigfoot(
         {
@@ -27,29 +33,196 @@
         }
     );
 </script>
-  <script>
-  $("#largerTextImage").click(function() {
-  $("body").css("fontSize", "120%");
-});
 
-</script
+<!-- Menu -->
+  <script>
+$(function() {
+
+	// grab the initial top offset of the navigation 
+	var sticky_navigation_offset_top = $('#sticky_navigation').offset().top;
+	
+	// our function that decides weather the navigation bar should have "fixed" css position or not.
+	var sticky_navigation = function(){
+		var scroll_top = $(window).scrollTop(); // our current vertical position from the top
+		
+		// if we've scrolled more than the navigation, change its position to fixed to stick to top, otherwise change it back to relative
+		if (scroll_top > sticky_navigation_offset_top) { 
+			$('#sticky_navigation').css({ 'position': 'fixed', 'top':0, 'left':0 });
+		} else {
+			$('#sticky_navigation').css({ 'position': 'relative' }); 
+		}   
+	};
+	
+	// run our function on load
+	sticky_navigation();
+	
+	// and run it again every time you scroll
+	$(window).scroll(function() {
+		 sticky_navigation();
+	});
+	
+	// NOT required:
+	// for this demo disable all links that point to "#"
+	$('a[href="#"]').click(function(event){ 
+		event.preventDefault(); 
+	});
+	
+});
+</script>
   
+  <!-- highlights, might disable -->
+  <script type="text/javascript">
+jQuery.fn.highlight = function(pat) {
+ function innerHighlight(node, pat) {
+  var skip = 0;
+  if (node.nodeType == 3) {
+   var pos = node.data.toUpperCase().indexOf(pat);
+   if (pos >= 0) {
+    var spannode = document.createElement('span');
+    spannode.className = 'highlight';
+    var middlebit = node.splitText(pos);
+    var endbit = middlebit.splitText(pat.length);
+    var middleclone = middlebit.cloneNode(true);
+    spannode.appendChild(middleclone);
+    middlebit.parentNode.replaceChild(spannode, middlebit);
+    skip = 1;
+   }
+  }
+  else if (node.nodeType == 1 && node.childNodes && !/(script|style)/i.test(node.tagName)) {
+   for (var i = 0; i < node.childNodes.length; ++i) {
+    i += innerHighlight(node.childNodes[i], pat);
+   }
+  }
+  return skip;
+ }
+ return this.each(function() {
+  innerHighlight(this, pat.toUpperCase());
+ });
+};
+jQuery.fn.removeHighlight = function() {
+ return this.find("span.highlight").each(function() {
+  this.parentNode.firstChild.nodeName;
+  with (this.parentNode) {
+   replaceChild(this.firstChild, this);
+   normalize();
+  }
+ }).end();
+};
+
+// function to get selected text in a webpage
+function getSelText() {
+  var seltxt = '';      // store selected text
+
+  // get selected text
+  if (window.getSelection) {
+    seltxt = window.getSelection();
+  } else if (document.getSelection) {
+    seltxt = document.getSelection();
+  } else if (document.selection) {
+    seltxt = document.selection.createRange().text;
+  }
+  return seltxt;
+}
+--></script>
+
+<script type="text/javascript"><!--
+$(document).ready(function() {
+  // when double click on BODY area
+  $('body').dblclick(function() {
+    var seltxt = getSelText();      // get selected text
+    seltxt = $.trim(seltxt);        // remove the whitespace from the beginning and end of "seltxt"
+    $(this).removeHighlight().highlight(seltxt);      // calls the function that anulate and highlight
+  });
+});
+--></script>
+
+  <!-- Scroll to anchor stuff -->
+  <script>
+	$(function() {
+	  $('a[href*=#]:not([href=#])').click(function() {
+	    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+
+	      var target = $(this.hash);
+	      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+	      if (target.length) {
+	        $('html,body').animate({
+	          scrollTop: target.offset().top -120, 
+	        }, 1000);
+	        return false;
+	      }
+	    }
+	  });
+	});
+	</script>
   
 </head>
 
+
+
 <body>
+
+<!--navigation-->
+
+<div id="sticky_navigation_wrapper">
+<div id="sticky_navigation">	
+
+<div id='cssmenu'>
+<ul>
+   <li><a href='#Title'>Title</a></li>
+     <li><a href='#introduction'>Introduction</a></li>
+   <li><a href='#THEVOCABULARY'>The Vocabulary</a>
+      <ul>
+         <li><a href="#11">1.1 The world evolving words</a></li>
+         <li><a href="#12">1.2 The origin and evolution of the word “interface”</a></li>
+         <li><a href="#13">1.3 Interface in the context of science fiction</a></li>
+      </ul>
+   </li>
+   <li><a href="#THELOOKOFANINTERFACE">THE LOOK OF AN INTERFACE</a>
+      <ul>
+         <li><a href="#21">2.1 Push to exit spaceship</a></li>
+         <li><a href="#22">2.2 Capitalized green text</a></li>
+         <li><a href="#23">2.3 GUI</a></li>
+      </ul>
+   </li>
+   <li><a href="#THETHREEDIMENSIONALPIXEL">THE THREE DIMENSIONAL PIXEL</a>
+      <ul>
+         <li><a href="#31">3.1 Layers upon layers</a></li>
+         <li><a href="#32">3.2 Volumetric projection</a></li>
+         <li><a href="#33">3.3 Augmented virtual reality</a></li>
+      </ul>
+   </li>
+   <li><a href='#Conclusion'>Conclusion</a></li>
+</ul>
+
+
+</div>
+</div>
+</div>
 
 
 <div id="middle">
-<h1>Science Fiction's Influence 
-on the Modern Interface
-</h1>
 
 
-<h2>THE VOCABULARY</h2>
 
-  <h3>1.1 The world changing words</h3>
-  <p>We live in a society where most people know and more importantly are interested in the technological and scientific advancements around them. Millions of people watched the Rosetta-Philae comet landing <a href="#fn:1" rel="footnote"> </a>  on the 12th of November 2014 and during the latest iPhone 6 unveiling in September 2014, the number of people interested in seeing the new technology showcased live was so high, that Apple's servers crashed and were down for the better part of the event. <a href="#fn:2" rel="footnote"> </a> It has become interesting and easy to follow these types of news and events, as the topics and terminology they cover have become such a prominent part of our lives. We know what a spaceship is, we know what a robot is and we know what the Internet is. We don't need to describe them or add a picture. But while it is easy to talk about these elements now, when they were conceived, the authors had a lot of trouble trying to explain them.
+
+
+<font color="red">TEMPORARY NOTES:<br> Double clicking a word highlights all similar words in the text for reference, but accidentally clicking a space will crash the tab! Doesn't affect mobile devices. <br> Website is fully mobile compatible! <br>Images and videos not yet placed.</font>
+
+
+
+<h1 id="Title">Science Fiction's Influence on the Modern Interface </h1>
+
+
+<div 
+
+
+
+<h2 id="THEVOCABULARY">THE VOCABULARY</h2>
+
+  <h3 id="11">1.1 The world changing words</h3>
+  <p>
+  
+  We live in a society where most people know and more importantly are interested in the technological and scientific advancements around them. Millions of people watched the Rosetta-Philae comet landing <a href="#fn:1" rel="footnote"> </a>  on the 12th of November 2014 and during the latest iPhone 6 unveiling in September 2014, the number of people interested in seeing the new technology showcased live was so high, that Apple's servers crashed and were down for the better part of the event. <a href="#fn:2" rel="footnote"> </a> It has become interesting and easy to follow these types of news and events, as the topics and terminology they cover have become such a prominent part of our lives. We know what a spaceship is, we know what a robot is and we know what the Internet is. We don't need to describe them or add a picture. But while it is easy to talk about these elements now, when they were conceived, the authors had a lot of trouble trying to explain them.
   </p>
   
   <p>
@@ -60,7 +233,7 @@ Many of the world changing technologies and advancements have come from times wh
 </p>
 
 
-  <h3>1.2 The Origin and Evolution of the word "Interface"</h3>
+  <h3 id="12">1.2 The Origin and Evolution of the word "Interface"</h3>
 
   <p>While the origin of the word "interface" does not have a straight relation to science fiction, it was coined around the same time as many of the earlier science fiction stories and soon became a very influential scientific term. The word "interface" was formulated by James Thompson Bottomley in his 1882 book "Hydrostatics". In it he describes the various states of liquidity and viscosity "A perfect fluid may be defined as a body, the contiguous parts of which exert pressure upon each other perpendicular to the interface which separates them at the interface." <a href="#fn:4" rel="footnote"> </a>
   
@@ -83,12 +256,12 @@ Alexander R. Galloway says that because of the way people metaphorise many of th
 An "interface" can be defined by multiple perspectives. Brenda Laurel a video game designer defined the interface as a surface where the necessary contact between interactors and tasks allowed functions to be performed while Norman Long a sociologist researching social interface theory describes it as a critical point of interaction between life worlds. The understanding of the word interface is then considered a general one but can be defined in the settlement of the Human - Computer Interface as the way, the context and the content of reading through engagement.
 </p>
   
-  <h3>1.3 Interface in the context of science fiction</h3>
+  <h3 id="13">1.3 Interface in the context of science fiction</h3>
   <p>The "interface" is in essence a very generic and general term, but this can be narrowed down by defining the context in which it is used. Even in the field of computer science an "interface" can refer to multiple occasions and actions, but I will be focusing on the interface of human-computer interaction. This refers to the way we already interact with the computer. The keyboard, mouse, screen, and speakers - they are all ways of interacting with the computer underneath our desks or in our hands. And while some science fiction elements I will be researching go beyond physical, my main focus will be on interface aspects that are visual, describable or audible.</p>
+  <h2 id="THELOOKOFANINTERFACE">THE LOOK OF AN INTERFACE</h2>
+  <h2></h2>
   
-  <h2>THE LOOK OF AN INTERFACE</h2>
-  
-  <h3>2.1 Push to exit spaceship</h3>
+  <h3 id="21">2.1 Push to exit spaceship</h3>
   <p>In Georges Méliès 1902 silent film "Le Voyage dans la Lune" as the space capsule has crashed on the moon, the people in it push the door open to exit their shuttle. A spaceships door or hatch is a key part of the interaction between the astronauts and the empty void around their shuttle. It is the interface between them in a claustrophobic capsule and their exit from there. As such Nathan Shedroff brings out an interesting moment in his book "MAKE IT SO Interaction Design Lessons from Science Fiction" of Georges Méliès movie that the door of their space capsule has no lever, no button or handle. The door is simply pushed apart. <a href="#fn:7" rel="footnote"> </a> While the movie itself is not an exemplary work of science theory, the exiting of the shuttle without interacting with the door besides pushing it shows the mentality of the time this movie was made in. With the advancements of mechanisms in to the 1920s it is clear why 1927 Metropolis was a huge contrast to Méliès movie and featured an enormous array of levers, knobs, switches and dials. Shedroff thinks this could be contributed by the war times prior and ongoing, as many of the soldiers who spent long periods of time in the lever filled war scenarios, be it war rooms, tanks, submarines or planes, became accustomed to those as a way of manipulating, at the time, state of the art technology. When finalizing their service and going back home, they would take those images of wall filled levers and switches with them and as cinema consumers expect it from science fiction visuals portraying the future technologies. This clearly shows an introduction in the development of science fiction visuals from the designers perspective as the futuristic elements used in the film had to have strong references to the period of release for the viewers to make sense of what they were seeing. The trend was that the more buttons and controls were on a board, the more possibilities it produced making it futuristic and exciting. One of the first real attempts at making a purposeful interface, a step away from the fiction side and towards the more scientific, came in the 1950 movie "Destination Moon", where instead of filling a wall with extensive meaningless buttons, Robert Heinlein a science fiction writer was asked to collaborate with making the movie and provide input to make the interface for the astronaut that would mimic a real interface. Each gauge had a reason and each button a purpose.  </p>
   
   <p>
@@ -99,7 +272,8 @@ While anything that has the function of switching something on or off can be lab
 The past years have been very touch-screen heavy for many interface fields, most notably mobile devices such as phones and laptops. But while modern science fiction imagery shows us a future filled with floating touch based interfaces and other screens lacking in physical buttons, the Software usability Research Laboratory at Wichita State University has done extensive research on the subject of touchscreen typing versus physical keyboard typing, and has concluded that while we interface with our computers using our hands and more importantly our fingers for typing, a physical keyboard with its tactile feedback will stand over touchscreens. <a href="#fn:8" rel="footnote"> </a> Shedroff asks in his book if we will make a full circle back to physical levers as our hands are made to interact with levers and buttons rather than touchscreens, but I think looking back at science fiction pushes us out of predictable loops. Tactus Technology is developing a surface that can mold its screen to have buttons of any kind or layout overlaying a touchscreen. This further blurs the line between what is a physical button and what our fingers can interface with. <a href="#fn:9" rel="footnote"> </a>
 </p>
   
-  <h3>2.2 Capitalized green text</h3>
+  <h3 id="22">2.2 Capitalized green text</h3>
+  
   <p>As with depiction of space travel, the early years of computer interfaces in movies relied heavily on imagination. One of the earliest 3D computer rendered interfaces in science fiction cinema was in 1977 Star Wars Episode IV: A New Hope. In the scene the pilots are shown a 3D representation of the Death Star trenches composed of vertex points and lines. While the way it was produced was using virtual world coordinates and programming with visual output only existing after a tedious programming effort, the outcome shown is very similar to how current 3D industry has adopted the making of 3D models for CAD application, 3D printing, game character development and even still visual effects in movies. This was mainly contributed by Edwin Catmull who in the 70s was pioneering the efforts to develop computer generated imagery.  <a href="#fn:10" rel="footnote"> </a>
    </p>
   
@@ -114,7 +288,7 @@ Text based interfaces are also used in conjunction with hacker culture. Most fam
 The 1990s brought on the internet adoption and with it the need to describe computer file structures, networks or data in general. And while many descriptions of them used metaphors like city, web, window, doorway, science fiction movies had to describe them visually. This brought on a myriad of interfaces trying to portray computer based networks, data structures or accessing files by hacking. One of the more notorious ones are 1995 Hackers and Johnny Mnemonic. Hackers visualizes the internet as a spatial layered three dimensional array of containers where data is moved on an object basis. Visual symbols such as worms, rabbits and skyscrapers are covering the users' interfaces to portray data and by doing so the information on screen becomes unreadable. Johnny Mnemonic takes a more futuristic approach as a user wearing a virtual headset almost identical to current Oculus Rift or Sony Morpheus goggles, sees a spatial representation of data and the internet as a literal cityscape that can be navigated with gestures. The way these two movies visualize the internet and display data are extremely over the top and unpractical, but there is logic behind them. In 1994, one year prior to these two films, Muriel Cooper a digital designer and researcher presented her groups work done at the MIT Media Lab at a TED5 conference in Monterey, California. What she and her group worked on was developing a way to visualize typography in three dimensional space. She called this research "Designing an information landscape in time and space". During the talk she presented a number of demos put together to show how typography could function in endless space and how moving through data could be done in a more engaging way. It was a revolutionary moment as the trend for interface design at that time was solely based on the desktop metaphor with overlapping opaque rectangles. What Cooper visualized was a way to stack information and show hierarchy, navigate through it and see data horizons of possible headings. Scale through containers of filterable topics, visualize data as graphs and amounts without the need to swap applications. This was a groundbreaking way to treat typography on the computer. Text no longer had to be treated as pixels parallel to the screen. Just as street signs direct our stare by pointing the way, so too did Coopers way of displaying data give us direction for navigation. While mainstream acceptance of this type of navigation has not been attempted, many science fiction films noted Coopers visuals for their own idea of the futuristic interface, thus giving hope to at least a partial adaptation of her demo in actual usable form.
 </p>
   
-  <h3>2.3 GUI</h3>
+  <h3 id="23">2.3 GUI</h3>
   <p>With the wide adaptation of office computers in the late 80s the cumbersome command-line interface had to be simplified. While much of the advancements in home computing interface has been given to Apple with their Macintosh line of computers, the actual revolution of an interface came from XEROX Palo Alto Research Center (PARC). Many science fiction movies before had treated the computer screen interface with layout elements and buttons, but at PARC they were the first to develop the desktop related Graphical User Interface (GUI) that we still are accustomed to today. <a href="#fn:11" rel="footnote"> </a> The imagery they produced was not covered in eye candy as it is nowadays but it was a strong foundation to build on, one that has not yet been surpassed.  </p>
   
   <p>
@@ -133,7 +307,11 @@ Content itself on displays is usually in the form of typography or infographics.
 Typeset in The Future is a website blog dedicated to looking into typography presented in iconic science fiction films, be it the title sequence, interfaces and displays, buttons, labels or even logos. In their articles they dissect the most prominent scenes in science fiction history and look at what the set designers have said with their use of typography. Unfortunately what they discovered is that rarely is there any deviation from already set 20th century typography norms. The most used fonts in science fiction films are considered to be Microgamma, Eurostyle and Helvetica, with 7-segment and OCR A / B as scene specific extras. This is a strange aspect, as looking into the typographic developments in the last few century alone would give hope to this progress continuing in the 21st century and further. But what we are treated with is the same norms as today. Dave Addey, one of the writers on Typeset in The Future suggests that this could simply be a balancing element. With many components of a science fiction scene already being wildly futuristic and bizarre, typography is the piece that can still make it recognizable to the viewers. <a href="#fn:15" rel="footnote"> </a> Another reason for keeping the typography so clean and recognizable could be the idea of Chekhof's gun. This is the principle that every element in a narration needs a purpose and cannot be replaced. In the case of typography in science fiction films, the Chekhof's gun is the red large bold text on a door that read "CAUTION, EXPLOSIVE BOLTS". <a href="#fn:16" rel="footnote"> </a> The unsurprising climax being that at one point during the movie the explosive bolts will then explode. As the average shot lengths of action sequences is around 2-3 seconds per shot, the time viewers have to read any text is very limited. The same reason counts for the simplicity of typography displayed on screens. While some interfaces in science fiction keep the information on them ambiguous as it is not vital to the plot, when there is a message to be told by a screen, it is sized almost from edge to edge. Freezing the film and judging the interface as a still image counts for a very disappointing experience as the usability of the interface can seem close to useless except to display that one word message. This leads to less typographic excitement on the side of movie interfaces but designers try to make up for it by playing with the type of title sequences. Two notable ones being Stanley Kubrick's 2001: A Space Odyssey and Ridley Scott's Alien. Kubrick's film starts with a calm camera tilt across space with the title sequence popping up in Gill Sans, having its O letters exchanged for the almost perfectly circular zeros. Alien however starts with a 90 second long eyrie fade in of lines that eventually spell out the movie title. While typography plays a very specific plot role in the midst of a film, it is exciting to see designers being able to make something typographically memorable for science fiction movies in the form of title sequences.
 </p>
   
-  <h2>3.1 A three dimensional pixel</h2>
+    
+        
+ 
+  
+  <h2 id="THETHREEDIMENSIONALPIXEL">3.1 A three dimensional pixel</h2>
   <p>...</p>
   
   

@@ -1,77 +1,36 @@
+
+
+video {
+  width: 100%    !important;
+  height: auto   !important;
+}
+
 #middle{
     background-color:#fff;
     
-    padding:0px;
-    margin:20px;
+    padding:10px;
+    margin:10px;
     font-family: sans-serif;
     }
 	
 	
-	
-	 
+.highlight { background-color: #fff;
+color:#ff4cba;
+padding:1px
+ }
 
 
-@media (min-width: 1024px) {
-  
-  p {
-color:#0375e5;
-text-align:left;
-font-family: sans-serif;
-line-height: 150%;
-word-break: break-word;
-hyphens: auto;
-
-  }
-  
-  h1 { 
-    display: block;
-    line-height: 100%;
-    font-size: 3em;
-    margin-top: 0.67em;
-    margin-bottom: 0.67em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
-    color:#0375e5;
-}
-
-h2 { 
-
-    display: block;
-    margin-top: 0.67em;
-    margin-bottom: 0.67em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
-    color:#0375e5;
-}
-
-h3 { 
-
-    display: block;
-    color: #ff4cba;
-    margin-top: 0.67em;
-    margin-bottom: 0.67em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
-    
-}
-
-}
 
 
-@media (max-width: 1024px) {
 
   p {
 color:#0375e5;
 text-align:left;
 font-family: sans-serif;
 line-height: 150%;
-word-break: break-word;
-hyphens: auto;
 font-size: 1em;
   }
+  
   
   h1 { 
     display: block;
@@ -108,7 +67,7 @@ h3 {
 }
 
 
-}
+
 
 	 /* unvisited link */
 a:link {
@@ -163,4 +122,9 @@ a:visited {
     user-select:none;
 }
 
+body {
+padding:0 0 0 0;
+margin:0 0 0 0;
+
+}
 
