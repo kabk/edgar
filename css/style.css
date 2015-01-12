@@ -1,4 +1,36 @@
+@media all {
+	.page-break	{ display: none; }
+}
 
+@media print {
+	.page-break	{ display: block; page-break-before: always; }
+	
+}
+
+img {
+max-width: 100%;
+margin:5px 0px 0px 0px;
+}
+
+h6 {
+padding 0px;
+margin:0px 0px 0px 0px;
+}
+
+
+
+
+#picL {
+float: left;
+margin: 0px 20px 0px 0px;
+color:#ff4cba;
+}
+
+#picR {
+float: right;
+margin: 0px 0px 0px 5px;
+color:#ff4cba;
+}
 
 video {
   width: 100%    !important;
@@ -6,15 +38,27 @@ video {
 }
 
 #middle{
-    background-color:#fff;
     
-    padding:10px;
+    background-color: #fff;
+   /* 
+    background-image: url("../images/prom.jpg");
+      background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; */
+
+    padding:0px 20px 20px 20px;
     margin:10px;
-    font-family: sans-serif;
+       
     }
 	
-	
-.highlight { background-color: #fff;
+
+
+.highlight { 
+background-color: #fff;
 color:#ff4cba;
 padding:1px
  }
@@ -26,22 +70,24 @@ padding:1px
   p {
 color:#0375e5;
 text-align:left;
-font-family: sans-serif;
 line-height: 150%;
 font-size: 1em;
+font-family: 'Vollkorn', serif;
   }
   
   
   h1 { 
     display: block;
-    line-height: 100%;
-    font-size: 2em;
+    line-height: 120%;
+    font-size: 5em;
+    text-align:left;
     margin-top: 0.67em;
     margin-bottom: 0.67em;
     margin-left: 0;
     margin-right: 0;
-    font-weight: bold;
+    font-weight: 900;
     color:#0375e5;
+     font-family: 'Open Sans', sans-serif;
 }
 
 h2 { 
@@ -53,6 +99,7 @@ h2 {
     margin-right: 0;
     font-weight: bold;
     color:#0375e5;
+     font-family: 'Open Sans', sans-serif;
 }
 
 h3 { 
@@ -64,6 +111,7 @@ h3 {
     margin-left: 0;
     margin-right: 0;
     font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
 }
 
 
@@ -123,8 +171,209 @@ a:visited {
 }
 
 body {
-padding:0 0 0 0;
-margin:0 0 0 0;
+padding:0px;
+margin:0px;
 
 }
+
+
+#desktop {
+display: none;
+
+}
+
+
+
+
+
+@media all and (min-width: 1030px)
+ {
+
+ #TitleImage{
+   display: none;
+  }
+ 
+ 
+#desktop {
+color: #ff4cba;
+display: inline-block;
+text-align:center;
+line-height: 150%;
+font-size: 3em;
+font-family: PT Serif;
+margin:5% 30% 30% 30%;
+}
+
+  
+  
+video {
+  width: 100%    !important;
+  height: auto   !important;
+  display: none;
+}
+
+#middle{
+    
+    background-color: #fff;
+   /* 
+    background-image: url("../images/prom.jpg");
+      background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; */
+
+    padding:0px 50px 50px 50px;
+    margin:10px;
+   
+  
+    
+    }
+	
+	
+.highlight { 
+background-color: #fff;
+color:#ff4cba;
+padding:1px
+display: none;
+ }
+
+
+
+
+
+  p {
+color:#0375e5;
+text-align:left;
+line-height: 150%;
+font-size: 1em;
+font-family: 'Vollkorn', serif;
+display: none;
+  }
+  
+  
+  h1 { 
+    display: block;
+    line-height: 100%;
+    font-size: 5em;
+    text-align:center;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    color:#0375e5;
+     font-family: 'Open Sans', sans-serif;
+     display: none;
+}
+
+h2 { 
+
+    display: block;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    color:#0375e5;
+     font-family: 'Open Sans', sans-serif;
+     display: none;
+}
+
+h3 { 
+
+    display: block;
+    color: #ff4cba;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    display: none;
+}
+
+
+
+
+	 /* unvisited link */
+a:link {
+
+    color: #ff4cba;
+    -webkit-transition-duration: 0.2s;
+    -moz-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    
+    display: none;
+}
+
+/* mouse over link */
+a:hover {
+
+    color: #000;
+    -webkit-transition-duration: 0.2s;
+    -moz-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    display: none;
+}
+
+/* selected link */
+a:active {
+
+    color: #ff4cba;
+    -webkit-transition-duration: 0.2s;
+    -moz-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    display: none;
+}
+
+/* visited link */
+a:visited {
+
+    color: #000;
+    -webkit-transition-duration: 0.2s;
+    -moz-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    display: none;
+}
+
+body {
+padding:0px;
+margin:0px;
+
+}
+
+img {
+display: none;
+}
+
+h6 {
+display:none;
+}
+
+h5 {
+display:none;
+}
+
+
+}
+
 

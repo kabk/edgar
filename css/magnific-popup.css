@@ -132,9 +132,7 @@ button::-moz-focus-inner {
   filter: alpha(opacity=65);
   padding: 0 0 10px 10px;
   color: white;
-  font-style: normal;
-  font-size: 28px;
-  font-family: Arial, Baskerville, monospace; }
+  font-size: 1em; }
   .mfp-close:hover, .mfp-close:focus {
     opacity: 1;
     filter: alpha(opacity=100); }
@@ -156,7 +154,7 @@ button::-moz-focus-inner {
   top: 0;
   right: 0;
   color: #cccccc;
-  font-size: 12px;
+  font-size: 1em;
   line-height: 18px; }
 
 .mfp-arrow {
@@ -269,7 +267,7 @@ img.mfp-img {
   .mfp-figure small {
     color: #bdbdbd;
     display: block;
-    font-size: 12px;
+    font-size: 0.5em;
     line-height: 14px; }
   .mfp-figure figure {
     margin: 0; }
